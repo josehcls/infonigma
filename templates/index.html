@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>InfoNigma</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+    .input_ {
+        border: none;
+        background:
+        repeating-linear-gradient(90deg,
+            dimgrey 0,
+            dimgrey 1ch,
+            transparent 0,
+            transparent 1.5ch)
+        0 100%/100% 2px no-repeat;
+        color: dimgrey;
+        font: 5ch consolas, monospace;
+        letter-spacing: .5ch;
+    }
+    input:focus {
+        outline: none;
+        color: dodgerblue;
+    }
+    .lock {
+        cursor: pointer;
+    }
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 800px; /* Could be more or less, depending on screen size */
+    }
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body style="margin: 0; padding: 0; color: #424242; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="800" style="border-collapse: collapse;">
+                    <tr>
+                        <td align="center" bgcolor="#009bcf" style="padding: 40px 0 40px 0;">
+                            <img src="/static/info.png" alt="" width="400px" style="display: block;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#fdfdfd" style="padding: 40px 30px 40px 30px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td style="font-size: 24px;">
+                                            <b>Desafio:</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 20px 0 30px 0;">
+                                            Cada cadeado possue uma senha única expressa pelos enigmas que vocês receberam.
+                                            Para cada um deles, vocês podem colocar uma senha e tentar abri-lo clicando na imagem do cadeado.
+                                            <br/>
+                                            <br/>
+                                            Após abrir os 3 cadeados, clique no Baú para abri-lo.
+                                            <br/>
+                                            <br/>
+                                            Boa sorte!
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                <tr>
+                                                    <td width="250" valign="top">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                            <tr align="center">
+                                                                <td>
+                                                                    <img id='lock_1' class='lock' src="/static/lock.png" alt="" width="77px" height="128px" style="display: block; padding-right: 1.0ch" />
+                                                                    <img id='unlock_1' src="/static/unlock.png" alt="" width="77px" height="128px" style="display: none; padding-right: 1.0ch" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center" style="padding: 10px 0 0 0;" >
+                                                                    <input id='key_1' class='input_' maxlength='3' placeholder='000' style='width: 4.5ch;'/>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td style="font-size: 0; line-height: 0;" width="35">
+                                                        &nbsp;
+                                                    </td>
+                                                    <td width="250" valign="top">
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                            <tr align="center">
+                                                                <td>
+                                                                    <img id='lock_2' class='lock' src="/static/lock.png" alt="" width="77px" height="128px" style="display: block; padding-right: 1.0ch" />
+                                                                    <img id='unlock_2' src="/static/unlock.png" alt="" width="77px" height="128px" style="display: none; padding-right: 1.0ch" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center" style="padding: 10px 0 0 0;">
+                                                                    <input id='key_2' class='input_' maxlength='6' placeholder='000000' style='width: 9.0ch;'/>                                                                 </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td style="font-size: 0; line-height: 0;" width="35">
+                                                            &nbsp;
+                                                        </td>
+                                                        <td width="250" valign="top">
+                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                <tr align="center">
+                                                                    <td>
+                                                                        <img id='lock_3' class='lock' src="/static/lock.png" alt="" width="77px" height="128px" style="display: block; padding-right: 1.0ch" />
+                                                                        <img id='unlock_3' src="/static/unlock.png" alt="" width="77px" height="128px" style="display: none; padding-right: 1.0ch" />
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center" style="padding: 10px 0 0 0;">
+                                                                        <input id='key_3' class='input_' maxlength='4' placeholder='0000' style='width: 6.0ch'/>                                                                    </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#009bcf" width="100%" style="padding: 30px 30px 30px 30px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr align="center">
+                                                <td align="center">
+                                                    <img id='chest' src="/static/chest.png" alt="" width="200px" height="167px" style="display: block; cursor: pointer;" />
+                                                    <img id='unchest' src="/static/unchest.png" alt="" width="200px" height="167px" style="display: none;" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <div id="congrats" class="modal">
+                <div class="modal-content" align="center">
+                    <h1 style="margin: 0; padding: 0; color: #424242; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;"> Parabéns! <br/> Já viu qual o <a id='resposta' href="">Produto</a>? </h1>
+                </div>
+            </div>
+        </body>
+        </html>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+        <script type="text/javascript">
+            function get_key(num) {
+                if (num == 1)
+                    return $('#key_1').val()
+                else if (num == 2)
+                    return $('#key_2').val()
+                else if (num == 3)
+                    return $('#key_3').val()
+                else return 0
+            };
+        function get_lock(num) {
+            if (num == 1)
+                return 'lock_1'
+            else if (num == 2)
+                return 'lock_2'
+            else if (num == 3)
+                return 'lock_3'
+            else return 0
+        };
+    function get_unlock(num) {
+        if (num == 1)
+            return 'unlock_1'
+        else if (num == 2)
+            return 'unlock_2'
+        else if (num == 3)
+            return 'unlock_3'
+        else return 0
+    };
+function get_key(num) {
+    if (num == 1)
+        return $('#key_1').val()
+    else if (num == 2)
+        return $('#key_2').val()
+    else if (num == 3)
+        return $('#key_3').val()
+    else return 0
+};
+$( ".lock" ).click(function(event) {
+    id = event.target.id
+    num = id[id.length - 1]
+    key = get_key(num) || '000'
+    fetch(`/v1/enigma/group/0/lock/${num}/passw/${key}`, {
+        method: 'GET'
+    })
+    .then(res => {
+        return res.json()
+    })
+    .then((response) => {
+        console.log(JSON.stringify(response))
+        if (response.status == "locked") {
+            $(document.getElementById(get_lock(num))).effect( "shake", {times:2}, 250 );
+        } else if (response.status == "unlocked") {
+            unlock(num)
+        } else {
+            alert("ERRO")
+        }
+    })
+});
+function unlock(num){
+    $(document.getElementById(get_lock(num))).css('display', 'none')
+    $(document.getElementById(get_unlock(num))).css('display', 'block')
+};
+$( "#chest" ).click(function(event) {
+    key = ($('#key_1').val() + $('#key_2').val() + $('#key_3').val()) || '0000000000000'
+    console.log(key)
+    fetch(`/v1/enigma/group/0/lock/0/passw/${key}`, {
+        method: 'GET'
+    })
+    .then(res => {
+        return res.json()
+    })
+    .then((response) => {
+        console.log(JSON.stringify(response))
+        if (response.status == "locked") {
+            $('#chest').effect( "shake", {times:2}, 250 );
+        } else if (response.status == "unlocked") {
+            $('#chest').css('display', 'none')
+            unlock(1)
+            unlock(2)
+            unlock(3)
+            $('#unchest').css('display', 'block')
+            $('#unchest').effect
+            setTimeout(function(){                
+                document.getElementById("resposta").setAttribute("href", `https://www.google.com.br/search?q=${key}`)
+                var modal = document.getElementById('congrats');
+                modal.style.display = "block";
+    }, 300);
+        } else {
+            alert("ERRO")
+        }
+    })
+});
+
+window.onclick = function(event) {
+    var modal = document.getElementById('congrats');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
