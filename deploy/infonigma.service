@@ -1,0 +1,18 @@
+[Unit]
+Description=Gunicorn instance to serve infonigma
+Requires=infonigma.socket
+After=network.target
+
+[Service]
+PIDFile=/run/infonigma/pid
+User=infonigma
+Group=www-data
+RuntimeDirectory=infonigma
+WorkingDirectory=/home/infonigma/infonigma
+Environment="PATH=/home/infonigma/.virtualenvs/infonigma/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+ExecStart=/home/infonigma/.virtualenvs/infonigma/bin/gunicorn --timeout 0 --workers 3 --max-requests 0 --pid /run/infonigma/pid --bind unix:/run/infonigma/socket -m 007 wsgi:app --access-logfile /home/infonigma/logs/gunicorn.access --error-logfile /home/infonigma/logs/gunicorn.error
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s TERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=infonigma socket
+
+[Socket]
+ListenStream=/run/infonigma/socket
+
+[Install]
+WantedBy=sockets.target
