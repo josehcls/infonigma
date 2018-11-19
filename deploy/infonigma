@@ -1,10 +1,10 @@
 server {
     listen 80;
-    server_name infonigma.infopriceti.com.br;
+    server_name 107.21.88.91;
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /home/shcrubles/shcrubles;
+        root /home/infonigma/infonigma;
     }
 
     location / {
