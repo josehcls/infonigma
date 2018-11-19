@@ -17,9 +17,11 @@ def favicon():
 def page_not_found(error):
     return render_template('404.html'), 404
 
-@app.route('/v1/enigma')
-def enigma():
-    return render_template('index.html')
+@app.route('/v1/enigma/group/<int:group>')
+def enigma(group):
+    if group not in [0, 1, 2, 3, 4, 5]:
+        raise Exception('Grupo Indisponível')
+    return render_template('index.html', group=group)
 
 @app.route('/v1/enigma/group/<int:group>/lock/<int:lock>/passw/<passw>', methods=['GET'])
 def unlock(group, lock, passw):

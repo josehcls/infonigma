@@ -11,7 +11,7 @@ def get_password(group):
 
 def get_lock_status (group, lock, passw):
     key = get_password(group)
-    print(passw, '    ', key[locks[lock]])
+    print(passw, key, key[locks[lock]])
     if passw == key[locks[lock]]:
         return True
     else:
