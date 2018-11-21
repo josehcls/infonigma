@@ -82,7 +82,7 @@
                                     </tr>
                                     <tr>
                                         <td style="padding: 20px 0 30px 0;">
-                                            Cada cadeado possue uma senha única expressa pelos enigmas que vocês receberam.
+                                            Cada cadeado possue uma senha única expressa pelas pistas que vocês receberam.
                                             Para cada um deles, vocês podem colocar uma senha e tentar abri-lo clicando na imagem do cadeado.
                                             <br/>
                                             <br/>
@@ -106,7 +106,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="center" style="padding: 10px 0 0 0;" >
-                                                                    <input id='key_1' class='input_' maxlength='3' placeholder='000' style='width: 4.5ch;'/>
+                                                                    <input id='key_1' class='input_' maxlength='3' placeholder='XXX' style='width: 4.5ch;'/>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -124,7 +124,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="center" style="padding: 10px 0 0 0;">
-                                                                    <input id='key_2' class='input_' maxlength='6' placeholder='000000' style='width: 9.0ch;'/>                                                                 </td>
+                                                                    <input id='key_2' class='input_' maxlength='6' placeholder='XXXXXX' style='width: 9.0ch;'/>                                                                 </td>
                                                                 </tr>
                                                             </table>
                                                         </td>
@@ -141,7 +141,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td align="center" style="padding: 10px 0 0 0;">
-                                                                        <input id='key_3' class='input_' maxlength='4' placeholder='0000' style='width: 6.0ch'/>                                                                    </td>
+                                                                        <input id='key_3' class='input_' maxlength='4' placeholder='XXXX' style='width: 6.0ch'/>                                                                    </td>
                                                                     </tr>
                                                                 </table>
                                                             </td>
@@ -219,7 +219,7 @@
             $( ".lock" ).click(function(event) {
                 id = event.target.id
                 num = id[id.length - 1]
-                key = get_key(num) || '000'
+                key = get_key(num) || 'X'
                 fetch(`/v1/enigma/group/{{ group }}/lock/${num}/passw/${key}`, {
                     method: 'GET'
                 })
@@ -244,7 +244,7 @@
             };
 
             $( "#chest" ).click(function(event) {
-                key = ($('#key_1').val() + $('#key_2').val() + $('#key_3').val()) || '0000000000000'
+                key = ($('#key_1').val() + $('#key_2').val() + $('#key_3').val()) || 'XXXXXXXXXXXXX'
                 console.log(key)
                 fetch(`/v1/enigma/group/{{ group }}/lock/0/passw/${key}`, {
                     method: 'GET'
